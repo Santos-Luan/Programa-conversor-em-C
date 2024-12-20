@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <locale.h>
 
-// void convesao_comprimento();
+void convesao_comprimento();
 // void convesao_massa();
 // void convesao_volume();
 // void convesao_temperatura();
@@ -35,30 +35,30 @@ int main()
 
     switch (loop)
     {
-    // case 1:
-    //   convesao_comprimento();
-    //   break;
-    // case 2:
-    //   convesao_massa();
-    //   break;
-    // case 3:
-    //   convesao_volume();
-    //   break;
-    // case 4:
-    //   convesao_temperatura();
-    //   break;
-    // case 5:
-    //   convesao_velocidade();
-    //   break;
-    // case 6:
-    //   convesao_energia();
-    //   break;
-    // case 7:
-    //   convesao_area();
-    //   break;
-    case 8:
-      convesao_tempo();
-      break;
+       case 1:
+        convesao_comprimento();
+       break;
+      // case 2:
+      //   convesao_massa();
+      //   break;
+      // case 3:
+      //   convesao_volume();
+      //   break;
+      // case 4:
+      //   convesao_temperatura();
+      //   break;
+      // case 5:
+      //   convesao_velocidade();
+      //   break;
+      // case 6:
+      //   convesao_energia();
+      //   break;
+      // case 7:
+      //   convesao_area();
+      //   break;
+      case 8:
+        convesao_tempo();
+        break;
       // case 9:
       //   convesao_ArmDados();
       //   break;
@@ -74,6 +74,45 @@ int main()
   return 0;
 }
 
+void convesao_comprimento() {
+    // Declaração de variáveis
+    double valor, resultado;
+    int origem, destino;
+
+    // Fatores de conversão para metros
+    double fatores_para_metros[] = {1000,1.0, 0.01, 0.001, 0.0254, 1609.34, 0.3048, 0.9144};
+    char unidades[][15] = {"km","metros", "centimetros","milimetros", "polegadas", "milhas", "pes", "jardas"};
+    int total_unidades = sizeof(fatores_para_metros) / sizeof(fatores_para_metros[0]);
+
+    // Exibe as unidades disponíveis
+    printf("\nUnidades disponíveis:\n");
+    for (int i = 0; i < total_unidades; i++) {
+        printf("%d. %s\n", i + 1, unidades[i]);
+    }
+
+    // Solicita o valor e as unidades de origem e destino
+    printf("Escolha o número da unidade de origem: ");
+    scanf("%d", &origem);
+
+    printf("Escolha o número da unidade de destino: ");
+    scanf("%d", &destino);
+
+        printf("\nDigite o valor a ser convertido: ");
+    scanf("%lf", &valor);
+
+    // Verifica se as opções de origem e destino são válidas
+    if (origem < 1 || origem > total_unidades || destino < 1 || destino > total_unidades) {
+        printf("Opção inválida. Tente novamente.\n");
+        return;
+    }
+
+    // Converte o valor para metros e depois para a unidade de destino
+    double valor_em_metros = valor * fatores_para_metros[origem - 1];
+    resultado = valor_em_metros / fatores_para_metros[destino - 1];
+
+    // Exibe o resultado da conversão
+    printf("\n%.4f %s é igual a %.4f %s\n", valor, unidades[origem - 1], resultado, unidades[destino - 1]);
+}
 //-------------------> 8. Unidades de tempo (segundos, minutos, horas).
 void convesao_tempo()
 {
