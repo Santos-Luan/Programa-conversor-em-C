@@ -10,7 +10,7 @@ void convesao_comprimento();
 // void convesao_energia();
 // void convesao_area();
 void convesao_tempo();
-// void convesao_ArmDados();
+void convesao_ArmDados();
 
 int main()
 {
@@ -59,9 +59,9 @@ int main()
       case 8:
         convesao_tempo();
         break;
-      // case 9:
-      //   convesao_ArmDados();
-      //   break;
+      case 9:
+         convesao_ArmDados();
+         break;
     case 0:
       printf("Saindo do programa.\n");
       break;
@@ -73,6 +73,69 @@ int main()
   }
   return 0;
 }
+
+void convesao_ArmDados() {
+    double valor, resultado;
+    int origem, destino;
+
+    // Fatores de conversão para bytes
+    double fatores_para_bytes[] = {
+        0.125,  // bits para bytes
+        1.0,    // bytes para bytes
+        1024,   // kilobytes para bytes
+        1048576, // megabytes para bytes
+        1073741824, // gigabytes para bytes
+        1099511627776.0 // terabytes para bytes
+    };
+
+    char unidades[][10] = {
+        "bits", 
+        "bytes", 
+        "kilobytes", 
+        "megabytes", 
+        "gigabytes", 
+        "terabytes"
+    };
+
+    int total_unidades = sizeof(fatores_para_bytes) / sizeof(fatores_para_bytes[0]);
+
+    // Solicita a unidade de origem
+    printf("\nUnidades disponíveis para conversão:\n");
+    for (int i = 0; i < total_unidades; i++) {
+        printf("%d. %s\n", i + 1, unidades[i]);
+    }
+    printf("Escolha o número correspondente à unidade de origem: ");
+    scanf("%d", &origem);
+
+    // Verifica se a unidade de origem é válida
+    if (origem < 1 || origem > total_unidades) {
+        printf("Opção inválida. Tente novamente.\n");
+        return;
+    }
+
+    // Solicita a unidade de destino
+    printf("\nAgora escolha o número correspondente à unidade de destino: ");
+    scanf("%d", &destino);
+
+    // Verifica se a unidade de destino é válida
+    if (destino < 1 || destino > total_unidades) {
+        printf("Opção inválida. Tente novamente.\n");
+        return;
+    }
+
+    // Solicita o valor a ser convertido
+    printf("\nDigite o valor a ser convertido (%s): ", unidades[origem - 1]);
+    scanf("%lf", &valor);
+
+    // Converte o valor para bytes e depois para a unidade de destino
+    double valor_em_bytes = valor * fatores_para_bytes[origem - 1];
+    resultado = valor_em_bytes / fatores_para_bytes[destino - 1];
+
+    // Exibe o resultado da conversão
+    printf("\n%.4f %s é igual a %.4f %s\n", valor, unidades[origem - 1], resultado, unidades[destino - 1]);
+}
+
+
 
 void convesao_comprimento() {
     // Declaração de variáveis
