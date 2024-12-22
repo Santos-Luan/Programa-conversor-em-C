@@ -3,7 +3,7 @@
 #include <locale.h>
 
 void convesao_comprimento();
-// void convesao_massa();
+ void convesao_massa();
 // void convesao_volume();
 // void convesao_temperatura();
 // void convesao_velocidade();
@@ -38,9 +38,9 @@ int main()
        case 1:
         convesao_comprimento();
        break;
-      // case 2:
-      //   convesao_massa();
-      //   break;
+       case 2:
+         convesao_massa();
+         break;
       // case 3:
       //   convesao_volume();
       //   break;
@@ -211,4 +211,59 @@ void convesao_tempo()
   {
     printf("Valor incorreto, retorne ao menu para selecionar as opções! \n");
   }
+}
+
+void convesao_massa() {
+    double valor, resultado;
+    int origem, destino;
+
+    // Fatores de conversão para grama
+    double fatores_para_gramas[] = {
+        1000000,  // Tonelada para grama
+        1000,    // KG para grama
+        1.0,   // Grama para grama
+    };
+
+    char unidades[][15] = {
+        "toneladas",
+        "quilogramas",
+        "gramas"
+    };
+
+    int total_unidades = sizeof(fatores_para_gramas) / sizeof(fatores_para_gramas[0]);
+
+    // Solicita a unidade de origem
+    printf("\nUnidades disponíveis para conversão:\n");
+    for (int i = 0; i < total_unidades; i++) {
+        printf("%d. %s\n", i + 1, unidades[i]);
+    }
+    printf("Escolha o número correspondente à unidade de origem: ");
+    scanf("%d", &origem);
+
+    // Verifica se a unidade de origem é válida
+    if (origem < 1 || origem > total_unidades) {
+        printf("Opção inválida. Tente novamente.\n");
+        return;
+    }
+
+    // Solicita a unidade de destino
+    printf("\nAgora escolha o número correspondente à unidade de destino: ");
+    scanf("%d", &destino);
+
+    // Verifica se a unidade de destino é válida
+    if (destino < 1 || destino > total_unidades) {
+        printf("Opção inválida. Tente novamente.\n");
+        return;
+    }
+
+    // Solicita o valor a ser convertido
+    printf("\nDigite o valor a ser convertido (%s): ", unidades[origem - 1]);
+    scanf("%lf", &valor);
+
+    // Converte o valor para gramas e depois para a unidade de destino
+    double valor_em_gramas = valor * fatores_para_gramas[origem - 1];
+    resultado = valor_em_gramas / fatores_para_gramas[destino - 1];
+
+    // Exibe o resultado da conversão
+    printf("\n%.4f %s é igual a %.4f %s\n", valor, unidades[origem - 1], resultado, unidades[destino - 1]);
 }
