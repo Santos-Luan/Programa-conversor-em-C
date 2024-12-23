@@ -53,7 +53,7 @@ int main()
       // case 6:
       //   convesao_energia();
       //   break;
-      // case 7:
+      case 7:
         convesao_area();
         break;
       case 8:
