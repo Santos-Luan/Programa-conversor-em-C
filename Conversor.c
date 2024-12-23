@@ -3,8 +3,8 @@
 #include <locale.h>
 
 void convesao_comprimento();
- void convesao_massa();
-// void convesao_volume();
+void convesao_massa();
+void convesao_volume();
 // void convesao_temperatura();
 // void convesao_velocidade();
 // void convesao_energia();
@@ -41,9 +41,9 @@ int main()
        case 2:
          convesao_massa();
          break;
-      // case 3:
-      //   convesao_volume();
-      //   break;
+      case 3:
+        convesao_volume();
+        break;
       // case 4:
       //   convesao_temperatura();
       //   break;
@@ -134,8 +134,6 @@ void convesao_ArmDados() {
     // Exibe o resultado da conversão
     printf("\n%.4f %s é igual a %.4f %s\n", valor, unidades[origem - 1], resultado, unidades[destino - 1]);
 }
-
-
 
 void convesao_comprimento() {
     // Declaração de variáveis
@@ -266,4 +264,32 @@ void convesao_massa() {
 
     // Exibe o resultado da conversão
     printf("\n%.4f %s é igual a %.4f %s\n", valor, unidades[origem - 1], resultado, unidades[destino - 1]);
+}
+
+void convesao_volume() {
+  int unidadeVolume;
+  float valor;
+
+  printf("Qual a unidade de volume que voce possui para converter? \n");
+  printf("1 - Litros \n2 - Mililitros \n3 - Metros Cubicos \n");
+  scanf("%d", &unidadeVolume);
+
+  if (unidadeVolume == 1) { // Litros
+    printf("Litros: ");
+    scanf("%f", &valor);
+    printf("%.6f Mililitros\n", valor * 1000);
+    printf("%.6f Metros Cubicos\n", valor / 1000);
+  } else if (unidadeVolume == 2) { // Mililitros
+    printf("Mililitros: ");
+    scanf("%f", &valor);
+    printf("%.6f Litros\n", valor / 1000);
+    printf("%.6f Metros Cubicos\n", valor / 1000000);
+  } else if (unidadeVolume == 3) { // Metros cúbicos
+    printf("Metros Cubicos: ");
+    scanf("%f", &valor);
+    printf("%.6f Litros\n", valor * 1000);
+    printf("%.6f Mililitros\n", valor * 1000000);
+  } else {
+    printf("Valor incorreto, retorne ao menu para selecionar as opções! \n");
+  }
 }
