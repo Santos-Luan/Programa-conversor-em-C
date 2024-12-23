@@ -5,7 +5,7 @@
 void convesao_comprimento();
 void convesao_massa();
 void convesao_volume();
-// void convesao_temperatura();
+void convesao_temperatura();
 // void convesao_velocidade();
 // void convesao_energia();
 void convesao_area();
@@ -44,9 +44,9 @@ int main()
       case 3:
         convesao_volume();
         break;
-      // case 4:
-      //   convesao_temperatura();
-      //   break;
+      case 4:
+        convesao_temperatura();
+        break;
       // case 5:
       //   convesao_velocidade();
       //   break;
@@ -323,5 +323,74 @@ void convesao_area() {
     else {
         printf("Opção inválida! Tente novamente.\n");
     }
+}
+
+void convesao_temperatura(){
+  float celsius, kelvin, fahrenheit;
+  int opcao =0;
+
+
+  //Usuario escolhe o tipo de temperatura a ser convertida
+  printf("\n");
+  printf("Escolha o tipo de temperatura a ser modificada: \n");
+  printf("1- Celsius \n");
+  printf("2- Kelvin \n");
+  printf("3- Fahrenheit \n");
+
+  //Recebe o tipo de temperatura a ser alterada
+  printf("Digite uma opcao valida: ");
+  scanf("%d", &opcao);
+
+  //Entra em um switch que depende da opcao inserida
+  switch(opcao){
+    case 1:
+
+    //Recebe a temperatura em Celsius
+    printf("Digite a temperatura a ser convertida em Celsius: ");
+    scanf("%f", &celsius);
+    printf("\n");
+
+    fahrenheit = (celsius * 1.8) + 32;
+    kelvin = celsius + 273.15;
+
+    printf("Kelvin: %2.2f \n", kelvin);
+    printf("Fahrenheit: %2.2f \n", fahrenheit);
+    break;
+
+    case 2:
+
+     //Recebe a temperatura em Kelvin
+    printf("Digite a temperatura a ser convertida em Kelvin: ");
+    scanf("%f", &kelvin);
+    printf("\n");
+
+    celsius = kelvin - 273.15;
+    fahrenheit = ((kelvin - 273.15) * 1.8) + 32;
+
+    printf("Celsius: %2.2f \n", celsius);
+    printf("Fahrenheit: %2.2f \n", fahrenheit);
+    break;
+
+    case 3:
+
+    //Recebe a temperatura em Fahrenheit
+    printf("Digite a temperatura a ser convertida em Fahrenheit: ");
+    scanf("%f", &fahrenheit);
+    printf("\n");
+
+    celsius = (fahrenheit - 32)/ 1.8;
+    kelvin = ((fahrenheit - 32)/ 1.8) - 273.15;
+
+    printf("Kelvin: %2.2f \n", kelvin);
+    printf("Celsius: %2.2f \n", celsius);
+    break;
+
+    default:
+
+    printf("Opcao invalida. \n");
+
+    break;
+  }
+
 }
 
