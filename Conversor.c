@@ -8,7 +8,7 @@ void convesao_volume();
 // void convesao_temperatura();
 // void convesao_velocidade();
 // void convesao_energia();
-// void convesao_area();
+void convesao_area();
 void convesao_tempo();
 void convesao_ArmDados();
 
@@ -54,8 +54,8 @@ int main()
       //   convesao_energia();
       //   break;
       // case 7:
-      //   convesao_area();
-      //   break;
+        convesao_area();
+        break;
       case 8:
         convesao_tempo();
         break;
@@ -293,3 +293,35 @@ void convesao_volume() {
     printf("Valor incorreto, retorne ao menu para selecionar as opções! \n");
   }
 }
+
+void convesao_area() {
+    double valor, resultado;
+    int opcao;
+
+    // Pergunta ao usuário qual a conversão que ele deseja fazer
+    printf("Escolha uma opção de conversão de área:\n");
+    printf("1. Metros quadrados para Centímetros quadrados\n");
+    printf("2. Centímetros quadrados para Metros quadrados\n");
+    printf("Digite sua opção (1 ou 2): ");
+    scanf("%d", &opcao);
+
+    // Verifica a opção escolhida e realiza a conversão
+    if (opcao == 1) {
+        // Metros quadrados para centímetros quadrados
+        printf("Digite o valor em metros quadrados: ");
+        scanf("%lf", &valor);
+        resultado = valor * 10000;  // 1 m² = 10.000 cm²
+        printf("%.2f metros quadrados é igual a %.2f centímetros quadrados.\n", valor, resultado);
+    } 
+    else if (opcao == 2) {
+        // Centímetros quadrados para metros quadrados
+        printf("Digite o valor em centímetros quadrados: ");
+        scanf("%lf", &valor);
+        resultado = valor * 0.0001;  // 1 cm² = 0.0001 m²
+        printf("%.2f centímetros quadrados é igual a %.6f metros quadrados.\n", valor, resultado);
+    } 
+    else {
+        printf("Opção inválida! Tente novamente.\n");
+    }
+}
+
