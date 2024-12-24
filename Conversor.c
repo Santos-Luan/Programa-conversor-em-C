@@ -394,3 +394,69 @@ void convesao_temperatura(){
 
 }
 
+// Função para realizar a conversão de potência
+void conversao_potencia() {
+    double watts, quilowatts, cavalos_vapor;
+    int opcao = 0;
+
+    // Menu para o usuário escolher a unidade de entrada
+    printf("\n");
+    printf("Escolha a unidade de potência a ser convertida:\n");
+    printf("1- Watts\n");
+    printf("2- Quilowatts\n");
+    printf("3- Cavalos-Vapor\n");
+
+    // Recebe a escolha do usuário
+    printf("Digite uma opção válida: ");
+    scanf("%d", &opcao);
+
+    // Processa a conversão com base na escolha
+    switch (opcao) {
+        case 1:
+            // Recebe o valor em Watts
+            printf("Digite o valor em Watts: ");
+            scanf("%lf", &watts);
+
+            // Converte para Quilowatts e Cavalos-Vapor
+            quilowatts = watts / 1000.0;
+            cavalos_vapor = watts / 735.5;
+
+            // Exibe os resultados
+            printf("Quilowatts: %.2lf\n", quilowatts);
+            printf("Cavalos-Vapor: %.2lf\n", cavalos_vapor);
+            break;
+
+        case 2:
+            // Recebe o valor em Quilowatts
+            printf("Digite o valor em Quilowatts: ");
+            scanf("%lf", &quilowatts);
+
+            // Converte para Watts e Cavalos-Vapor
+            watts = quilowatts * 1000.0;
+            cavalos_vapor = watts / 735.5;
+
+            // Exibe os resultados
+            printf("Watts: %.2lf\n", watts);
+            printf("Cavalos-Vapor: %.2lf\n", cavalos_vapor);
+            break;
+
+        case 3:
+            // Recebe o valor em Cavalos-Vapor
+            printf("Digite o valor em Cavalos-Vapor: ");
+            scanf("%lf", &cavalos_vapor);
+
+            // Converte para Watts e Quilowatts
+            watts = cavalos_vapor * 735.5;
+            quilowatts = watts / 1000.0;
+
+            // Exibe os resultados
+            printf("Watts: %.2lf\n", watts);
+            printf("Quilowatts: %.2lf\n", quilowatts);
+            break;
+
+        default:
+            // Mensagem para opção inválida
+            printf("Opção inválida.\n");
+            break;
+    }
+}
