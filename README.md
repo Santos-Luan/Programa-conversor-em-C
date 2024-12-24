@@ -13,5 +13,3 @@ Aqui algumas instruções para a utilização do programa:
 5 - Digite o valor numérico e pressione Enter para ver o resultado da conversão.
 
 6 - Após cada conversão, você pode escolher outra opção ou sair digitando 0.
-
-7 - Se precisar ajustar as mensagens de instrução no código, posso ajudá-lo a adaptá-las.
