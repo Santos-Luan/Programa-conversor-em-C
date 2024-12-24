@@ -7,7 +7,7 @@ void convesao_massa();
 void convesao_volume();
 void convesao_temperatura();
 // void convesao_velocidade();
-// void convesao_energia();
+void convesao_energia();
 void convesao_area();
 void convesao_tempo();
 void convesao_ArmDados();
@@ -50,9 +50,9 @@ int main()
       // case 5:
       //   convesao_velocidade();
       //   break;
-      // case 6:
-      //   convesao_energia();
-      //   break;
+      case 6:
+        convesao_energia();
+        break;
       case 7:
         convesao_area();
         break;
@@ -395,7 +395,7 @@ void convesao_temperatura(){
 }
 
 // Função para realizar a conversão de potência
-void conversao_potencia() {
+void conversao_energia() {
     double watts, quilowatts, cavalos_vapor;
     int opcao = 0;
 
