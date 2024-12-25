@@ -11,6 +11,7 @@ void convesao_energia();
 void convesao_area();
 void convesao_tempo();
 void convesao_ArmDados();
+void conversao_pressao();
 
 int main()
 {
@@ -29,6 +30,7 @@ int main()
     printf("7. Área\n");
     printf("8. Tempo\n");
     printf("9. Dados\n");
+    printf("10. Pressão\n");
     printf("0. Sair\n");
     printf("Escolha uma opção: ");
     scanf("%d", &loop);
@@ -61,6 +63,9 @@ int main()
       break;
     case 9:
       convesao_ArmDados();
+      break;
+    case 10:
+      conversao_pressao();
       break;
     case 0:
       printf("Saindo do programa.\n");
@@ -482,4 +487,53 @@ void convesao_energia()
     printf("Opção inválida.\n");
     break;
   }
+}
+
+// Função para ler dados, converter pressão e exibir o resultado
+void conversao_pressao() {
+    double valor, resultado;
+    int unidadeOrigem, unidadeDestino;
+
+    printf("Digite o valor da pressão: ");
+    scanf("%lf", &valor);
+
+    printf("Escolha a unidade de origem:\n");
+    printf("1 - ATM\n2 - bar\n3 - Pa\n4 - psi\n");
+    scanf("%d", &unidadeOrigem);
+
+    printf("Escolha a unidade de destino:\n");
+    printf("1 - ATM\n2 - bar\n3 - Pa\n4 - psi\n");
+    scanf("%d", &unidadeDestino);
+
+    // Converter a unidade de origem para ATM
+    double valorATM = 0.0;
+    if (unidadeOrigem == 1) { // ATM
+        valorATM = valor;
+    } else if (unidadeOrigem == 2) { // bar
+        valorATM = valor / 1.01325;
+    } else if (unidadeOrigem == 3) { // Pa
+        valorATM = valor / 101325.0;
+    } else if (unidadeOrigem == 4) { // psi
+        valorATM = valor / 14.6959;
+    } else {
+        printf("Unidade de origem inválida!\n");
+        return;
+    }
+
+    // Converter de ATM para a unidade de destino
+    if (unidadeDestino == 1) { // ATM
+        resultado = valorATM;
+    } else if (unidadeDestino == 2) { // bar
+        resultado = valorATM * 1.01325;
+    } else if (unidadeDestino == 3) { // Pa
+        resultado = valorATM * 101325.0;
+    } else if (unidadeDestino == 4) { // psi
+        resultado = valorATM * 14.6959;
+    } else {
+        printf("Unidade de destino inválida!\n");
+        return;
+    }
+
+    // Exibir o resultado
+    printf("Resultado: %.2lf\n", resultado);
 }
